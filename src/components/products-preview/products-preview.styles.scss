@@ -1,0 +1,14 @@
+.product-preview-container {
+  margin-bottom: 50px;
+
+  .category-title {
+    margin: 20px 0px;
+    text-align: left;
+  }
+
+  .products-preview-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+}

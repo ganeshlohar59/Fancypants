@@ -1,0 +1,13 @@
+// Card Style
+.card {
+  background-color: white;
+  border-radius: 5px;
+
+  cursor: pointer;
+  transition-duration: 0.3s;
+
+  &:hover {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    transition-duration: 0.3s;
+  }
+}
