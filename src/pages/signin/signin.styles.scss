@@ -1,0 +1,11 @@
+.signin-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  // Background
+  background: url("../../assets/images/page-background.JPG");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}

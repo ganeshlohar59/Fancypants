@@ -12,6 +12,8 @@
   position: fixed;
   box-shadow: rgba(176, 183, 190, 0.1) 0px 8px 20px;
 
+  top: 0;
+
   .top-navigation {
     flex: 1;
     margin-left: 20px;
@@ -23,7 +25,11 @@
       justify-content: flex-end;
       align-items: center;
 
-      li {
+      .link {
+        text-decoration: none;
+      }
+
+      h4 {
         height: 10vh;
         display: flex;
         flex-direction: column;

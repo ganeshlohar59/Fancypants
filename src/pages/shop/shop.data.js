@@ -1,14 +1,14 @@
 const SHOP_DATA = [
   {
     id: 1,
-    title: "Hats",
+    title: "Mens",
     routeName: "hats",
     items: [
       {
         id: 1,
         name: "Brown Brim",
-        // imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-        imageUrl: "/images/shop-img/hats/brown-brim.png",
+        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+        // imageUrl: "/images/shop-img/hats/brown-brim.png",
         price: 25,
       },
       {

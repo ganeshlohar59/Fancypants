@@ -20,7 +20,7 @@ export default class CatagoriesList extends Component {
           linkurl: "mens",
         },
         {
-          id: 1,
+          id: 2,
           title: "Womens",
           subtitle: "Tops, Kurtas, and more",
           imageurl:
@@ -28,7 +28,7 @@ export default class CatagoriesList extends Component {
           linkurl: "",
         },
         {
-          id: 1,
+          id: 3,
           title: "Kids",
           subtitle: "T-Shirts, Pants, and more",
           imageurl:
@@ -36,7 +36,7 @@ export default class CatagoriesList extends Component {
           linkurl: "",
         },
         {
-          id: 1,
+          id: 4,
           title: "Home & Living",
           subtitle: "Electronics, and more",
           imageurl:

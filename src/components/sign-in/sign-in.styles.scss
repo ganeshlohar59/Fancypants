@@ -1,0 +1,72 @@
+.signin-component-container {
+  width: 400px;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   align-items: center;
+
+  background-color: white;
+
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  h2,
+  p {
+    width: auto;
+    text-align: start;
+    margin: 0px 25px;
+  }
+  h2 {
+    margin-top: 25px;
+  }
+  p {
+    margin-top: 5px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+
+    padding: 25px;
+  }
+
+  .create-account-text {
+    color: #ff3f6c;
+
+    margin-top: 10px;
+    padding: 15px 25px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ffebf0;
+    }
+  }
+
+  .google-auth-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 10px;
+    padding: 3px 25px;
+
+    cursor: pointer;
+
+    border: 1px solid #949ba5;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

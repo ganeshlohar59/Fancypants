@@ -1,0 +1,13 @@
+.form-input {
+  padding: 15px 25px;
+  margin-bottom: 15px;
+
+  border: 1px solid lightgray;
+
+  outline: none;
+  font-family: Rubik;
+
+  &:focus {
+    border: 1px solid black;
+  }
+}
