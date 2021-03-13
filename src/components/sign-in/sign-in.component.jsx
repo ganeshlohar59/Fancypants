@@ -14,8 +14,8 @@ import Button from "../button/button.component";
 import { signInWithGoogle } from "../firebase/firebase.utils";
 
 class Signin extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
@@ -65,7 +65,10 @@ class Signin extends Component {
             <h4>Sign in using google account</h4>
           </div>
 
-          <h4 className="create-account-text">
+          <h4
+            onClick={this.props.onSignUpClicked}
+            className="create-account-text"
+          >
             Don't have account ? Create New
           </h4>
         </form>

@@ -9,10 +9,15 @@ import Signin from "./pages/signin/signin.component";
 import Header from "./components/header/header.component";
 
 // Router
-import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  BrowserRouter as Router,
+  Redirect,
+} from "react-router-dom";
 
 // Firebase
-import { auth } from "./components/firebase/firebase.utils";
+import { auth, createUserProfile } from "./components/firebase/firebase.utils";
 
 class App extends Component {
   constructor() {
@@ -22,21 +27,35 @@ class App extends Component {
     };
   }
 
-  unsubscribeFromAuth = null;
+  displayAuthInfo = () => {
+    console.log(`${auth.currentUser.displayName} -> ${auth.currentUser.email}`);
+  };
 
   // Lifecycle
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({
-        currentUser: user,
-      });
-      console.log(user);
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userRef = await createUserProfile(user, user.displayName);
+        userRef.onSnapshot((snapshot) => {
+          this.setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data(),
+            },
+          });
+        });
+      } else {
+        this.setState({ currentUser: user });
+      }
     });
   }
 
   componentWillUnmount() {
-    this.unsubscribeFromAuth();
+    // this.unsubscribeFromAuth();
   }
+
+  switchToShopPageAfterSigninSuccessful = () => {};
+
   render() {
     return (
       <div className="App">
@@ -45,7 +64,9 @@ class App extends Component {
           <Switch>
             <Route exact={true} path="/" component={Homepage} />
             <Route path="/shop" component={Shop} />
-            <Route path="/signin" component={Signin} />
+            <Route path="/signin">
+              {this.state.currentUser ? <Redirect to="/" /> : <Signin />}
+            </Route>
           </Switch>
         </Router>
       </div>
