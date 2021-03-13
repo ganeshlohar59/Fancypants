@@ -10,17 +10,22 @@ import { auth } from "../firebase/firebase.utils";
 //
 import { Link } from "react-router-dom";
 
+// Redux
+import { connect } from "react-redux";
+
 const Header = ({ currentUser }) => (
   <div className="header">
     <div className="logo-container">
-      <h3>fancypants</h3>
+      <Link to="/" className="link">
+        <h3>fancypants</h3>
+      </Link>
     </div>
     <nav className="top-navigation">
       <ul>
         <Link className="link" to="/shop">
           <h4>Shop</h4>
         </Link>
-        <Link className="link" to="/">
+        <Link className="link" to="/contact">
           <h4>Contact</h4>
         </Link>
 
@@ -44,4 +49,9 @@ const Header = ({ currentUser }) => (
   </div>
 );
 
-export default Header;
+// Mapping state to reducer
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Header);

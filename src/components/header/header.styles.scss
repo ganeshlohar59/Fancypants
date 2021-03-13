@@ -17,6 +17,7 @@
   .top-navigation {
     flex: 1;
     margin-left: 20px;
+
     ul {
       width: 100%;
       list-style: none;
@@ -24,10 +25,6 @@
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-
-      .link {
-        text-decoration: none;
-      }
 
       h4 {
         height: 10vh;
@@ -54,4 +51,8 @@
       }
     }
   }
+}
+
+.link {
+  text-decoration: none;
 }
