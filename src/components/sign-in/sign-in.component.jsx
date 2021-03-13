@@ -11,7 +11,7 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 // Firebase
-import { signInWithGoogle } from "../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../firebase/firebase.utils";
 
 class Signin extends Component {
   constructor(props) {
@@ -22,8 +22,16 @@ class Signin extends Component {
     };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
+    const { email, password } = this.state;
+    if (email !== "" && password !== "") {
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+      } catch (error) {
+        console.log(`failed to create user profile ${error.message}`);
+      }
+    }
   };
 
   handleInputChange = (event) => {
