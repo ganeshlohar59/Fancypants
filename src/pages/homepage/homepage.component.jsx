@@ -9,6 +9,7 @@ import CatagoriesList from "../../components/catagories-list/catagories-list.com
 const Homepage = () => (
   <div className="homepage">
     <div className="contents">
+      {/* Categories List */}
       <CatagoriesList />
     </div>
   </div>
