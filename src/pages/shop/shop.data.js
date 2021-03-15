@@ -1,50 +1,56 @@
 const SHOP_DATA = [
   {
     id: 1,
-    title: "Mens",
-    routeName: "hats",
+    title: "MENS",
+    routeName: "mens",
     items: [
       {
         id: 1,
-        name: "Brown Brim",
-        imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+        name: "Here & Now",
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/4318138/2018/5/4/11525433792765-HERENOW-Men-Black-Printed-Round-Neck-T-shirt-2881525433792598-1.jpg",
         // imageUrl: "/images/shop-img/hats/brown-brim.png",
-        price: 25,
+        price: 524,
       },
       {
         id: 2,
-        name: "Blue Beanie",
+        name: "Dillinger",
         // imageUrl: 'https://i.ibb.co/ypkgK0X/blue-beanie.png',
-        imageUrl: "/images/shop-img/hats/blue-beanie.png",
-        price: 18,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/11067734/2019/12/10/34b589c2-80b9-4ad9-81ea-84333fbc46761575972548055-DILLINGER-Men-Tshirts-4071575972546110-1.jpg",
+        price: 539,
       },
       {
         id: 3,
-        name: "Brown Cowboy",
+        name: "HRX by Hritik Roshan",
         // imageUrl: 'https://i.ibb.co/QdJwgmp/brown-cowboy.png',
-        imageUrl: "/images/shop-img/hats/brown-cowboy.png",
-        price: 35,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/1700944/2019/6/8/972c9498-3a37-4d5d-976c-4493b4d5c0021559989322793-HRX-by-Hrithik-Roshan-Men-Yellow-Printed-Round-Neck-T-Shirt--1.jpg",
+        price: 699,
       },
       {
         id: 4,
-        name: "Grey Brim",
+        name: "Moda Rapido",
         // imageUrl: 'https://i.ibb.co/RjBLWxB/grey-brim.png',
-        imageUrl: "/images/shop-img/hats/grey-brim.png",
-        price: 25,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/2378414/2018/2/8/11518071262125-Moda-Rapido-Men-Navy-Blue-Striped-Round-Neck-T-shirt-3641518071261992-1.jpg",
+        price: 699,
       },
       {
         id: 5,
-        name: "Green Beanie",
+        name: "Maniac",
         // imageUrl: 'https://i.ibb.co/YTjW3vF/green-beanie.png',
-        imageUrl: "/images/shop-img/hats/green-beanie.png",
-        price: 18,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2020/2/26/506fcc5b-e195-40dd-a73a-ddf55b5ce9e91582673725231-1.jpg",
+        price: 298,
       },
       {
         id: 6,
-        name: "Palm Tree Cap",
+        name: "Huetrap",
         // imageUrl: 'https://i.ibb.co/rKBDvJX/palm-tree-cap.png',
-        imageUrl: "/images/shop-img/hats/palm-tree-cap.png",
-        price: 14,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/2352649/2017/12/19/11513675056208-na-1061513675056044-1.jpg",
+        price: 494,
       },
       {
         id: 7,
@@ -71,35 +77,39 @@ const SHOP_DATA = [
   },
   {
     id: 2,
-    title: "Sneakers",
-    routeName: "sneakers",
+    title: "WOMENS",
+    routeName: "womens",
     items: [
       {
         id: 10,
-        name: "Adidas NMD",
+        name: "Ahika",
         // imageUrl: 'https://i.ibb.co/0s3pdnc/adidas-nmd.png',
-        imageUrl: "/images/shop-img/sneakers/adidas-nmd.png",
-        price: 220,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/11056154/2019/12/5/30b0017d-7e72-4d40-9633-ef78d01719741575541717470-AHIKA-Women-Black--Green-Printed-Straight-Kurta-990157554171-1.jpg",
+        price: 688,
       },
       {
         id: 11,
-        name: "Adidas Yeezy",
+        name: "Varanga",
         // imageUrl: 'https://i.ibb.co/dJbG1cT/yeezy.png',
-        imageUrl: "/images/shop-img/sneakers/yeezy.png",
-        price: 280,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/8529019/2019/1/23/5d6a8e02-0fa0-4770-82f5-6b52d9c983561548242338312-Varanga-mustard-printed-straight-kurta-6361548242336928-1.jpg",
+        price: 679,
       },
       {
         id: 12,
-        name: "Black Converse",
+        name: "Libas",
         // imageUrl: 'https://i.ibb.co/bPmVXyP/black-converse.png',
-        imageUrl: "/images/shop-img/sneakers/black-converse.png",
-        price: 110,
+        imageUrl:
+          "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/10356859/2019/8/8/b783aef9-c902-462e-af73-de159bfd011c1565256752191-Libas-Women-Kurta-Sets-2081565256750830-1.jpg",
+        price: 1249,
       },
       {
         id: 13,
         name: "Nike White AirForce",
         // imageUrl: 'https://i.ibb.co/1RcFPk0/white-nike-high-tops.png',
-        imageUrl: "/images/shop-img/sneakers/white-nike-high-tops.png",
+        imageUrl:
+          "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80",
         price: 160,
       },
       {
@@ -134,8 +144,8 @@ const SHOP_DATA = [
   },
   {
     id: 3,
-    title: "Jackets",
-    routeName: "jackets",
+    title: "KIDS",
+    routeName: "kids",
     items: [
       {
         id: 18,
@@ -176,8 +186,8 @@ const SHOP_DATA = [
   },
   {
     id: 4,
-    title: "Womens",
-    routeName: "womens",
+    title: "HOME & LIVING",
+    routeName: "homeandliving",
     items: [
       {
         id: 23,
@@ -227,55 +237,6 @@ const SHOP_DATA = [
         // imageUrl: 'https://i.ibb.co/qBcrsJg/white-vest.png',
         imageUrl: "/images/shop-img/womens/white-vest.png",
         price: 20,
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Mens",
-    routeName: "mens",
-    items: [
-      {
-        id: 30,
-        name: "Camo Down Vest",
-        // imageUrl: 'https://i.ibb.co/xJS0T3Y/camo-vest.png',
-        imageUrl: "/images/shop-img/mens/camo-vest.png",
-        price: 325,
-      },
-      {
-        id: 31,
-        name: "Floral T-shirt",
-        // imageUrl: 'https://i.ibb.co/qMQ75QZ/floral-shirt.png',
-        imageUrl: "/images/shop-img/mens/floral-shirt.png",
-        price: 20,
-      },
-      {
-        id: 32,
-        name: "Black & White Longsleeve",
-        // imageUrl: 'https://i.ibb.co/55z32tw/long-sleeve.png',
-        imageUrl: "/images/shop-img/mens/long-sleeve.png",
-        price: 25,
-      },
-      {
-        id: 33,
-        name: "Pink T-shirt",
-        // imageUrl: 'https://i.ibb.co/RvwnBL8/pink-shirt.png',
-        imageUrl: "/images/shop-img/mens/pink-shirt.png",
-        price: 25,
-      },
-      {
-        id: 34,
-        name: "Jean Long Sleeve",
-        // imageUrl: 'https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png',
-        imageUrl: "/images/shop-img/mens/roll-up-jean-shirt.png",
-        price: 40,
-      },
-      {
-        id: 35,
-        name: "Burgundy T-shirt",
-        // imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
-        imageUrl: "/images/shop-img/mens/polka-dot-shirt.png",
-        price: 25,
       },
     ],
   },

@@ -9,7 +9,7 @@ const ProductsPreview = ({ title, items }) => (
     <h3 className="category-title">{title}</h3>
     <div className="products-preview-list">
       {items
-        .filter((product, index) => index < 4)
+        .filter((product, index) => index < 6)
         .map(({ id, ...props }) => (
           <ProductCard key={id} {...props} />
         ))}
