@@ -1,9 +1,6 @@
 // Styles
 import "./header.styles.scss";
 
-// SVGs
-import CartIcon from "../../assets/svgs/cart.svg";
-
 // Firebase
 import { auth } from "../firebase/firebase.utils";
 
@@ -13,7 +10,11 @@ import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
 
-const Header = ({ currentUser }) => (
+// Components
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+
+const Header = ({ currentUser, visible }) => (
   <div className="header">
     <div className="logo-container">
       <Link to="/" className="link">
@@ -42,16 +43,17 @@ const Header = ({ currentUser }) => (
             <h4>Sign in</h4>
           </Link>
         )}
-
-        <img src={CartIcon} alt="" />
+        <CartIcon />
       </ul>
     </nav>
+    {visible ? <CartDropdown /> : null}
   </div>
 );
 
 // Mapping state to reducer
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user: { currentUser }, cart: { visible } }) => ({
+  currentUser,
+  visible,
 });
 
 export default connect(mapStateToProps)(Header);
