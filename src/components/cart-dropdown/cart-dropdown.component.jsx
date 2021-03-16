@@ -9,16 +9,25 @@ import { connect } from "react-redux";
 
 // Styles
 import "./cart-dropdown.styles.scss";
-import { addItem } from "../../redux/cart/cart.utils";
+
+import EmptyCartIcon from "../../assets/images/empty-cart-pink.png";
 
 const CartDropdown = ({ cartItems }) => (
   <div className="cart-dropdown">
     <div className="cart-items">
-      {cartItems.map((cartItem) => (
-        <CartItemSnippet key={cartItem.id} cartItem={cartItem} />
-      ))}
+      {cartItems.length === 0 ? (
+        <div className="empty-cart-layout">
+          <img src={EmptyCartIcon} alt="" />
+          <h4>Your cart is empty</h4>
+          <p>Add Something to your cart, it feels very lite!</p>
+        </div>
+      ) : (
+        cartItems.map((cartItem) => (
+          <CartItemSnippet key={cartItem.id} cartItem={cartItem} />
+        ))
+      )}
     </div>
-    <Button styles="go-to-cart">Go to Cart</Button>
+    <Button styles="go-to-cart">Checkout</Button>
   </div>
 );
 
