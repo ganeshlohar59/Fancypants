@@ -2,14 +2,31 @@
 import "../../assets/styles/card.styles.scss";
 import "./product-card.styles.scss";
 
-const ProductCard = ({ id, name, imageUrl, price }) => (
-  <div className="card product-card-container">
-    <img src={imageUrl} alt="" />
-    <div className="product-info">
-      <h4>{name}</h4>
-      <p>Rs. {price}</p>
-    </div>
-  </div>
-);
+// Components
+import Button from "../button/button.component";
 
-export default ProductCard;
+// Reduc
+import { connect } from "react-redux";
+import { addItemToCart } from "../../redux/cart/cart.actions";
+
+const ProductCard = ({ item, addItemToCart }) => {
+  const { name, price, imageUrl } = item;
+  return (
+    <div className="card product-card-container">
+      <img src={imageUrl} alt="" />
+      <Button styles="add-to-cart-btn" onClick={() => addItemToCart(item)}>
+        Add to Cart
+      </Button>
+      <div className="product-info">
+        <h4>{name}</h4>
+        <p>Rs. {price}</p>
+      </div>
+    </div>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addItemToCart: (item) => dispatch(addItemToCart(item)),
+});
+
+export default connect(null, mapDispatchToProps)(ProductCard);

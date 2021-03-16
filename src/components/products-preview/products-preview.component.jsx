@@ -10,8 +10,8 @@ const ProductsPreview = ({ title, items }) => (
     <div className="products-preview-list">
       {items
         .filter((product, index) => index < 6)
-        .map(({ id, ...props }) => (
-          <ProductCard key={id} {...props} />
+        .map((item) => (
+          <ProductCard key={item.id} item={item} />
         ))}
     </div>
   </div>
