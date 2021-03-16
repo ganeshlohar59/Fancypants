@@ -14,7 +14,7 @@ const CartIcon = ({ toggleCartVisibility }) => (
   <div className="cart-icon" onClick={toggleCartVisibility}>
     <BagIcon className="icon" />
     <div className="item-count">
-      <p>10</p>
+      <p>0</p>
     </div>
   </div>
 );
