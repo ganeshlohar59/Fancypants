@@ -6,6 +6,7 @@ import CartItemSnippet from "../cart-item-snippet/cart-item-snippet.component";
 
 // Redux
 import { connect } from "react-redux";
+import { selectCartItems } from "../../redux/cart/cart.selectors";
 
 // Styles
 import "./cart-dropdown.styles.scss";
@@ -27,12 +28,14 @@ const CartDropdown = ({ cartItems }) => (
         ))
       )}
     </div>
-    <Button styles="go-to-cart">Checkout</Button>
+    {cartItems.length === 0 ? null : (
+      <Button styles="go-to-cart">Checkout</Button>
+    )}
   </div>
 );
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+const mapStateToProps = (state) => ({
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapStateToProps, null)(CartDropdown);

@@ -14,6 +14,8 @@
 
   background-color: white;
 
+  padding: 10px 0px;
+
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 
   .cart-items {
@@ -22,7 +24,8 @@
   }
 
   .go-to-cart {
-    margin: 25px;
+    // margin: 25px;
+    margin: 10px 20px 0px 20px;
     height: 40px;
   }
 
@@ -42,6 +45,7 @@
 
     h4 {
       margin-top: 20px;
+      font-weight: 600;
     }
 
     p {

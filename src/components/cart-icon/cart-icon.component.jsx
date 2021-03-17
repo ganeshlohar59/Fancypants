@@ -8,6 +8,8 @@ import "./cart-icon.styles.scss";
 // Redux
 import { connect } from "react-redux";
 
+import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+
 import { toggleCartVisibility } from "../../redux/cart/cart.actions";
 
 const CartIcon = ({ toggleCartVisibility, cartItemCount }) => (
@@ -25,8 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleCartVisibility: () => dispatch(toggleCartVisibility()),
 });
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItemCount: cartItems.length,
+const mapStateToProps = (state) => ({
+  cartItemCount: selectCartItemsCount(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
