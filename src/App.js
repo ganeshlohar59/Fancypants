@@ -7,6 +7,7 @@ import Homepage from "./pages/homepage/homepage.component";
 import Shop from "./pages/shop/shop.component";
 import Signin from "./pages/signin/signin.component";
 import Header from "./components/header/header.component";
+import Checkout from "./pages/checkout/checkout.page";
 
 // Router
 import {
@@ -67,6 +68,7 @@ class App extends Component {
             <Route path="/signin">
               {this.props.currentUser ? <Redirect to="/" /> : <Signin />}
             </Route>
+            <Route exact={true} path="/checkout" component={Checkout} />
           </Switch>
         </Router>
       </div>

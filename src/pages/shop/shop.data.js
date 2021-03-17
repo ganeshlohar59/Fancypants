@@ -30,7 +30,7 @@ const SHOP_DATA = [
       },
       {
         id: 4,
-        name: "Moda Rapido",
+        name: "Moda Rapido T-shirt",
         // imageUrl: 'https://i.ibb.co/RjBLWxB/grey-brim.png',
         imageUrl:
           "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/2378414/2018/2/8/11518071262125-Moda-Rapido-Men-Navy-Blue-Striped-Round-Neck-T-shirt-3641518071261992-1.jpg",

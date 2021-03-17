@@ -8,6 +8,8 @@
 
   padding: 10px 20px;
 
+  cursor: pointer;
+
   img {
     width: 60px;
     height: 80px;
@@ -20,5 +22,9 @@
     p {
       margin-top: 5px;
     }
+  }
+
+  &:hover {
+    background-color: #f7f7f7;
   }
 }

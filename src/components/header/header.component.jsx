@@ -10,6 +10,11 @@ import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
 
+// Selectors
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { selectVisible } from "../../redux/cart/cart.selectors";
+
 // Components
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
@@ -51,9 +56,9 @@ const Header = ({ currentUser, visible }) => (
 );
 
 // Mapping state to reducer
-const mapStateToProps = ({ user: { currentUser }, cart: { visible } }) => ({
-  currentUser,
-  visible,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  visible: selectVisible,
 });
 
 export default connect(mapStateToProps)(Header);
