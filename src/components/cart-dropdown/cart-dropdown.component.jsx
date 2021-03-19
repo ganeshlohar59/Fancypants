@@ -3,6 +3,7 @@ import React from "react";
 // Components
 import Button from "../button/button.component";
 import CartItemSnippet from "../cart-item-snippet/cart-item-snippet.component";
+import EmptyCart from "../empty-states/empty-cart/empty-cart.component";
 
 // Redux
 import { connect } from "react-redux";
@@ -20,8 +21,6 @@ import "./cart-dropdown.styles.scss";
 // Router
 import { withRouter } from "react-router-dom";
 
-import EmptyCartIcon from "../../assets/images/empty-cart-pink.png";
-
 // Redux
 import { toggleCartVisibility } from "../../redux/cart/cart.actions";
 
@@ -29,15 +28,13 @@ const CartDropdown = ({ cartItems, totalCartAmount, history, dispatch }) => (
   <div className="cart-dropdown">
     <div className="cart-items">
       {cartItems.length ? (
+        // Cart is not empty, render cart items
         cartItems.map((cartItem) => (
           <CartItemSnippet key={cartItem.id} cartItem={cartItem} />
         ))
       ) : (
-        <div className="empty-cart-layout">
-          <img src={EmptyCartIcon} alt="" />
-          <h4>Your cart is empty</h4>
-          <p>Add Something to your cart, it feels very lite!</p>
-        </div>
+        // Cart is empty, render empty cart layout
+        <EmptyCart />
       )}
     </div>
     {cartItems.length === 0 ? null : (
