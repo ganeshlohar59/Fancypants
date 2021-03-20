@@ -5,7 +5,7 @@
   // align-items: center;
 
   .cart-items-container {
-    width: 580px;
+    width: 583px;
     height: 100%;
 
     overflow-y: scroll;
@@ -14,11 +14,34 @@
   }
 
   .pricing-details {
+    display: flex;
+    flex-direction: column;
+
     margin-left: 2%;
-    width: 28%;
-    height: 50%;
+    width: 25%;
+    height: fit-content;
     background-color: white;
 
     padding: 20px;
+  }
+
+  h4 {
+    font-weight: 600;
+  }
+
+  table {
+    width: 100%;
+    text-align: left;
+
+    margin: 15px 0px;
+
+    tr td:nth-child(2) {
+      /* I don't think they are 0 based */
+      text-align: right;
+    }
+
+    td {
+      padding: 8px 0px;
+    }
   }
 }

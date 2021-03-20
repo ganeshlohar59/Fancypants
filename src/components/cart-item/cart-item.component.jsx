@@ -22,8 +22,8 @@ const CartItem = ({ cartItem, clearFromCart, addItem, removeItem }) => {
     <div className="cart-item-container">
       <img className="product-image" src={imageUrl} alt="" />
       <div className="product-info">
-        <h4>‎Price {convertToCurrencyString(price, "INR")}</h4>
-        <p>{name}</p>
+        <h4>‎{name}</h4>
+        <p>Price • {convertToCurrencyString(price, "INR")}</p>
         <div className="number-widget">
           <h4 onClick={() => removeItem(cartItem)}>-</h4>
           <h4 className="quantity-text">{quantity}</h4>
