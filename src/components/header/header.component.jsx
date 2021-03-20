@@ -48,9 +48,9 @@ const Header = ({ currentUser, visible }) => (
             <h4>Sign in</h4>
           </Link>
         )}
-        <CartIcon />
       </ul>
     </nav>
+    <CartIcon />
     {visible ? <CartDropdown /> : null}
   </div>
 );
