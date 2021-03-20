@@ -41,7 +41,7 @@ const CartDropdown = ({ cartItems, totalCartAmount, history, dispatch }) => (
       <Button
         styles="go-to-cart"
         onClick={() => {
-          history.push("checkout");
+          history.push("/checkout");
           dispatch(toggleCartVisibility());
         }}
       >
