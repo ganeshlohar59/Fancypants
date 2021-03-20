@@ -4,6 +4,10 @@ export const addItem = (cartItems, cartItemToAdd) => {
     (cartItem) => cartItem.id === cartItemToAdd.id
   );
 
+  if (cartItemToAdd.quantity >= 10) {
+    return [...cartItems];
+  }
+
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
       cartItem.id === cartItemToAdd.id

@@ -1,13 +1,26 @@
 // Component
 import ProductCategoriesPreview from "../../components/product-catagories-preview/product-categories-preview.component";
+import CategoryProducts from "../../components/category-products/category-products.component";
 
 // Styles
 import "./shop.styles.scss";
 
-const Shop = () => {
+// Router
+import { Route } from "react-router-dom";
+
+const Shop = ({ match }) => {
   return (
     <div className="shop-page-container">
-      <ProductCategoriesPreview />
+      <Route
+        exact={true}
+        path={`${match.path}`}
+        component={ProductCategoriesPreview}
+      />
+      <Route
+        exact={true}
+        path={`${match.path}/:categoryId`}
+        component={CategoryProducts}
+      />
     </div>
   );
 };

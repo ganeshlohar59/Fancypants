@@ -1,0 +1,11 @@
+.title {
+  margin: 0px 0px 50px 0px;
+}
+.products-list {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, 215px);
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}

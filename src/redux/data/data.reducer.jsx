@@ -6,7 +6,7 @@ const INITIAL_STATE = {
       subtitle: "Shirts, T-Shirts, Casuals",
       imageurl:
         "https://images.unsplash.com/photo-1540924782561-3fc182603b86?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-      linkurl: "mens",
+      linkurl: "shop/mens",
     },
     {
       id: 2,
@@ -14,7 +14,7 @@ const INITIAL_STATE = {
       subtitle: "Tops, Kurtas, and more",
       imageurl:
         "https://images.unsplash.com/photo-1560253034-1a9c043ffb28?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-      linkurl: "",
+      linkurl: "shop/womens",
     },
     {
       id: 3,
@@ -22,7 +22,7 @@ const INITIAL_STATE = {
       subtitle: "T-Shirts, Pants, and more",
       imageurl:
         "https://images.unsplash.com/photo-1541580621-cb65cc53084b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-      linkurl: "",
+      linkurl: "shop/kids",
     },
     {
       id: 4,
@@ -30,12 +30,12 @@ const INITIAL_STATE = {
       subtitle: "Electronics, and more",
       imageurl:
         "https://images.unsplash.com/photo-1596162954151-cdcb4c0f70a8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
-      linkurl: "",
+      linkurl: "shop/homeandliving",
     },
   ],
 
-  shopData: [
-    {
+  shopData: {
+    mens: {
       id: 1,
       title: "MENS",
       routeName: "mens",
@@ -111,7 +111,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-    {
+    womens: {
       id: 2,
       title: "WOMENS",
       routeName: "womens",
@@ -178,7 +178,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-    {
+    kids: {
       id: 3,
       title: "KIDS",
       routeName: "kids",
@@ -220,7 +220,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-    {
+    homeandliving: {
       id: 4,
       title: "HOME & LIVING",
       routeName: "homeandliving",
@@ -276,7 +276,7 @@ const INITIAL_STATE = {
         },
       ],
     },
-  ],
+  },
 };
 
 const dataReducer = (state = INITIAL_STATE, action) => {

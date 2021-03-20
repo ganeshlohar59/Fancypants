@@ -5,7 +5,7 @@ import ProductsPreview from "../../components/products-preview/products-preview.
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { selectShopData } from "../../redux/data/data.selectors";
+import { selectShopDataForPreview } from "../../redux/data/data.selectors";
 
 const ProductCategoriesPreview = ({ shopCollection }) => {
   return (
@@ -18,7 +18,7 @@ const ProductCategoriesPreview = ({ shopCollection }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  shopCollection: selectShopData,
+  shopCollection: selectShopDataForPreview,
 });
 
 export default connect(mapStateToProps, null)(ProductCategoriesPreview);
