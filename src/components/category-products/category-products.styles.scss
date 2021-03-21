@@ -9,11 +9,3 @@
   grid-row-gap: 20px;
   grid-column-gap: 20px;
 }
-
-@media screen and (max-width: 480px) {
-  .products-list {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    grid-row-gap: 5px;
-    grid-column-gap: 5px;
-  }
-}
