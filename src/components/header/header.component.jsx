@@ -1,5 +1,11 @@
-// Styles
-import "./header.styles.scss";
+// Styled
+import {
+  HeaderContainer,
+  LogoContainer,
+  TopNavigationContainer,
+  NavItemList,
+  NavItem,
+} from "./header.styles";
 
 // Firebase
 import { auth } from "../firebase/firebase.utils";
@@ -19,41 +25,43 @@ import { selectVisible } from "../../redux/cart/cart.selectors";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-const Header = ({ currentUser, visible }) => (
-  <div className="header">
-    <div className="logo-container">
-      <Link to="/" className="link">
-        <h3>fancypants</h3>
-      </Link>
-    </div>
-    <nav className="top-navigation">
-      <ul>
-        <Link className="link" to="/shop">
-          <h4>Shop</h4>
+const Header = ({ currentUser, visible }) => {
+  return (
+    <HeaderContainer>
+      <LogoContainer>
+        <Link to="/">
+          <h3>fancypants</h3>
         </Link>
-        <Link className="link" to="/contact">
-          <h4>Contact</h4>
-        </Link>
-
-        {currentUser ? (
-          <h4
-            onClick={() => {
-              auth.signOut();
-            }}
-          >
-            Sign out
-          </h4>
-        ) : (
-          <Link className="link" to="/signin">
-            <h4>Sign in</h4>
+      </LogoContainer>
+      <TopNavigationContainer>
+        <NavItemList>
+          <Link className="link" to="/shop">
+            <NavItem>Shop</NavItem>
           </Link>
-        )}
-      </ul>
-    </nav>
-    <CartIcon />
-    {visible ? <CartDropdown /> : null}
-  </div>
-);
+          <Link className="link" to="/contact">
+            <NavItem>Contact</NavItem>
+          </Link>
+
+          {currentUser ? (
+            <NavItem
+              onClick={() => {
+                auth.signOut();
+              }}
+            >
+              Sign out
+            </NavItem>
+          ) : (
+            <Link className="link" to="/signin">
+              <NavItem>Sign in</NavItem>
+            </Link>
+          )}
+        </NavItemList>
+      </TopNavigationContainer>
+      <CartIcon />
+      {visible ? <CartDropdown /> : null}
+    </HeaderContainer>
+  );
+};
 
 // Mapping state to reducer
 const mapStateToProps = createStructuredSelector({

@@ -71,3 +71,7 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: #4f5255;
 }
+
+a {
+  text-decoration: none;
+}

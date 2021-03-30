@@ -1,18 +1,16 @@
 import React from "react";
 
-// Styles
-import "./homepage.styles.scss";
+// Styled
+import { HomepageContainer } from "./homepage.styles";
 
 // Components
 import CatagoriesList from "../../components/catagories-list/catagories-list.component";
 
 const Homepage = () => (
-  <div className="homepage">
-    <div className="contents">
-      {/* Categories List */}
-      <CatagoriesList />
-    </div>
-  </div>
+  <HomepageContainer>
+    {/* Categories List */}
+    <CatagoriesList />
+  </HomepageContainer>
 );
 
 export default Homepage;
