@@ -1,5 +1,5 @@
 .title {
-  margin: 0px 0px 50px 0px;
+  margin: 25px 50px;
 }
 .products-list {
   width: 100%;
@@ -8,4 +8,6 @@
   grid-template-columns: repeat(auto-fit, 215px);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
+
+  padding: 0px 50px;
 }

@@ -281,10 +281,37 @@ const INITIAL_STATE = {
       linkurl: "shop/homeandliving",
     },
   ],
+  // API call status
+  isFetching: false,
 };
 
 const dataReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    // Fetching
+    case DataActionTypes.FETCH_SHOP_DATA_START:
+      return {
+        ...state,
+        isFetching: true,
+        errorMessage: "",
+      };
+
+    // Fetch Successfull
+    case DataActionTypes.FETCH_SHOP_DATA_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        shopData: action.payload,
+      };
+
+    // Fetch Failed
+    case DataActionTypes.FETCH_SHOP_DATA_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
+      };
+
+    //
     case DataActionTypes.UPDATE_SHOP_DATA:
       return {
         ...state,

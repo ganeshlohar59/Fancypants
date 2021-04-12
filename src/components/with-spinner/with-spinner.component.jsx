@@ -6,7 +6,7 @@ import { SpinnerContainer } from "./with-spinner.styles";
 const withSpinner = (WrappedComponent) => ({ isLoading, ...otherProps }) => {
   return isLoading ? (
     <SpinnerContainer>
-      <ImpulseSpinner frontColor="#ff5d5d" backColor="#F7F5F6" />
+      <ImpulseSpinner frontColor="#ff5d5d" backColor="#F7F5F6" size={50} />
     </SpinnerContainer>
   ) : (
     <WrappedComponent {...otherProps} />

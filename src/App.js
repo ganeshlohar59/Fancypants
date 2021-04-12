@@ -18,7 +18,7 @@ import {
 } from "react-router-dom";
 
 // Firebase
-import { auth, createUserProfile } from "./components/firebase/firebase.utils";
+import { auth, createUserProfile } from "./firebase/firebase.utils";
 
 // Redux
 import { connect } from "react-redux";
@@ -38,19 +38,19 @@ class App extends Component {
   // Lifecycle
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        const userRef = await createUserProfile(user, user.displayName);
-        userRef.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(user);
-      }
-    });
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+    //   if (user) {
+    //     const userRef = await createUserProfile(user, user.displayName);
+    //     userRef.onSnapshot((snapshot) => {
+    //       setCurrentUser({
+    //         id: snapshot.id,
+    //         ...snapshot.data(),
+    //       });
+    //     });
+    //   } else {
+    //     setCurrentUser(user);
+    //   }
+    // });
   }
 
   componentWillUnmount() {

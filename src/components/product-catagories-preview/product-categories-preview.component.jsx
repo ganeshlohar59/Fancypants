@@ -7,9 +7,12 @@ import { createStructuredSelector } from "reselect";
 
 import { selectShopDataForPreview } from "../../redux/data/data.selectors";
 
+// Styles
+import "./products-categories-preview.styles.scss";
+
 const ProductCategoriesPreview = ({ shopCollection }) => {
   return (
-    <div className="products-categories-list">
+    <div className="product-categories-preview-container">
       {shopCollection.map(({ id, ...props }) => (
         <ProductsPreview key={id} {...props} />
       ))}

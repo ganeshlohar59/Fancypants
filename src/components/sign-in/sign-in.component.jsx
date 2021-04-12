@@ -6,12 +6,16 @@ import HeaderImage from "../../assets/images/window-header.png";
 // Styles
 import "./sign-in.styles.scss";
 
+// Redux
+import { connect } from "react-redux";
+import { googleSignInStart } from "../../redux/user/user.actions";
+
 // Components
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 // Firebase
-import { auth, signInWithGoogle } from "../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 
 class Signin extends Component {
   constructor(props) {
@@ -42,6 +46,7 @@ class Signin extends Component {
   };
 
   render() {
+    const { signInWithGoogle } = this.props;
     return (
       <div className="signin-component-container">
         <img src={HeaderImage} alt="" />
@@ -85,4 +90,8 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+const mapDispatchToProps = (dispatch) => ({
+  signInWithGoogle: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(Signin);

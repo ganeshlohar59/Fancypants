@@ -9,7 +9,7 @@ import Button from "../button/button.component";
 
 // Styles
 import "../sign-in/sign-in.styles.scss";
-import { auth, createUserProfile } from "../firebase/firebase.utils";
+import { auth, createUserProfile } from "../../firebase/firebase.utils";
 
 class Signup extends Component {
   constructor(props) {

@@ -8,7 +8,7 @@ import {
 } from "./header.styles";
 
 // Firebase
-import { auth } from "../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 
 //
 import { Link } from "react-router-dom";

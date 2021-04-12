@@ -26,3 +26,13 @@ export const selectCategory = memoize((categoryUrlParam) =>
     shopData ? shopData[categoryUrlParam] : null
   )
 );
+
+export const selectIsShopDataFetching = createSelector(
+  [selectData],
+  (data) => data.isFetching
+);
+
+export const selectIsShopDataLoaded = createSelector(
+  [selectData],
+  (data) => !!data.shopData
+);
