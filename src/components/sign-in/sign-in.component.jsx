@@ -8,14 +8,14 @@ import "./sign-in.styles.scss";
 
 // Redux
 import { connect } from "react-redux";
-import { googleSignInStart } from "../../redux/user/user.actions";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../redux/user/user.actions";
 
 // Components
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-
-// Firebase
-import { auth } from "../../firebase/firebase.utils";
 
 class Signin extends Component {
   constructor(props) {
@@ -29,13 +29,9 @@ class Signin extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    if (email !== "" && password !== "") {
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-      } catch (error) {
-        console.log(`failed to create user profile ${error.message}`);
-      }
-    }
+    if (email === "" && password === "") return;
+    const { signInWithEmailPassword } = this.props;
+    signInWithEmailPassword({ email, password });
   };
 
   handleInputChange = (event) => {
@@ -92,6 +88,8 @@ class Signin extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   signInWithGoogle: () => dispatch(googleSignInStart()),
+  signInWithEmailPassword: ({ email, password }) =>
+    dispatch(emailSignInStart({ email, password })),
 });
 
 export default connect(null, mapDispatchToProps)(Signin);

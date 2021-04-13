@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import DataActionTypes from "./data.types";
 
 // Firebase
@@ -25,4 +25,8 @@ export function* fetchShopDataAsync() {
 
 export function* startFetchingShopData() {
   yield takeLatest(DataActionTypes.FETCH_SHOP_DATA_START, fetchShopDataAsync);
+}
+
+export function* dataSagas() {
+  yield all([call(startFetchingShopData)]);
 }
