@@ -81,11 +81,31 @@ export function* onSignOutStart() {
   yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
 }
 
+export function* createUserWithEmailPassword({
+  payload: { email, password, displayName },
+}) {
+  try {
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+    const newUser = { displayName, ...user };
+    yield getSnapshotFromUserAuth(newUser);
+  } catch (error) {
+    yield put(signInFailure(error));
+  }
+}
+
+export function* onCreateUserWithEmailPasswordStart() {
+  yield takeLatest(
+    UserActionTypes.EMAIL_SIGN_UP_START,
+    createUserWithEmailPassword
+  );
+}
+
 export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailPasswordSignInStart),
     call(onCheckUserSession),
     call(onSignOutStart),
+    call(onCreateUserWithEmailPasswordStart),
   ]);
 }

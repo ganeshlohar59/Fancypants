@@ -3,13 +3,18 @@ import React, { Component } from "react";
 // Asset Imports
 import HeaderImage from "../../assets/images/window-header.png";
 
+//
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { emailSignUpStart } from "../../redux/user/user.actions";
+import { selectError } from "../../redux/user/user.selectors";
+
 // Components
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 // Styles
 import "../sign-in/sign-in.styles.scss";
-import { auth, createUserProfile } from "../../firebase/firebase.utils";
 
 class Signup extends Component {
   constructor(props) {
@@ -32,22 +37,27 @@ class Signup extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { displayName, email, password, confirmedPassword } = this.state;
+    const { createAccount, error } = this.props;
 
     if (password !== confirmedPassword) {
       alert("Password Don't match!");
       return;
     }
 
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+    await createAccount({ email, password, displayName });
 
-      await createUserProfile(user, displayName);
-    } catch (error) {
-      console.log(`failed to create user profile ${error.message}`);
-    }
+    if (error) return;
+
+    // try {
+    //   const { user } = await auth.createUserWithEmailAndPassword(
+    //     email,
+    //     password
+    //   );
+
+    //   await createUserProfile(user, displayName);
+    // } catch (error) {
+    //   console.log(`failed to create user profile ${error.message}`);
+    // }
   };
 
   render() {
@@ -100,4 +110,13 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = createStructuredSelector({
+  error: selectError,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  createAccount: ({ email, password, displayName }) =>
+    dispatch(emailSignUpStart({ email, password, displayName })),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

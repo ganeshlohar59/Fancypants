@@ -13,6 +13,13 @@ export function emailSignInStart(emailAndPassword) {
   };
 }
 
+export function emailSignUpStart(emailPasswordDisplayName) {
+  return {
+    type: UserActionTypes.EMAIL_SIGN_UP_START,
+    payload: emailPasswordDisplayName,
+  };
+}
+
 export function signInSucess(user) {
   return {
     type: UserActionTypes.SIGN_IN_SUCCESS,

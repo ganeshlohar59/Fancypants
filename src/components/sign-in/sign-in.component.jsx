@@ -13,9 +13,12 @@ import {
   emailSignInStart,
 } from "../../redux/user/user.actions";
 
+import { selectError } from "../../redux/user/user.selectors";
+
 // Components
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+import { createStructuredSelector } from "reselect";
 
 class Signin extends Component {
   constructor(props) {
@@ -27,11 +30,12 @@ class Signin extends Component {
   }
 
   handleSubmit = async (event) => {
+    // const { error } = this.props;
     event.preventDefault();
     const { email, password } = this.state;
     if (email === "" && password === "") return;
     const { signInWithEmailPassword } = this.props;
-    signInWithEmailPassword({ email, password });
+    await signInWithEmailPassword({ email, password });
   };
 
   handleInputChange = (event) => {
@@ -92,4 +96,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(emailSignInStart({ email, password })),
 });
 
-export default connect(null, mapDispatchToProps)(Signin);
+const mapStateToProps = createStructuredSelector({
+  error: selectError,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
