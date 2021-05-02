@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 // Asset Imports
 import HeaderImage from "../../assets/images/window-header.png";
@@ -20,75 +20,70 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import { createStructuredSelector } from "reselect";
 
-class Signin extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
+const Signin = ({
+  signInWithGoogle,
+  signInWithEmailPassword,
+  onSignUpClicked,
+}) => {
+  const [userCredentials, setUserCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-  handleSubmit = async (event) => {
-    // const { error } = this.props;
+  const { email, password } = userCredentials;
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
     if (email === "" && password === "") return;
-    const { signInWithEmailPassword } = this.props;
     await signInWithEmailPassword({ email, password });
   };
 
-  handleInputChange = (event) => {
+  const handleInputChange = (event) => {
     const { value, name } = event.target;
-    this.setState({
+    setUserCredentials({
+      ...userCredentials,
       [name]: value,
     });
   };
 
-  render() {
-    const { signInWithGoogle } = this.props;
-    return (
-      <div className="signin-component-container">
-        <img src={HeaderImage} alt="" />
-        <h2>Sign in</h2>
-        <p>Sign in using your email & password</p>
+  return (
+    <div className="signin-component-container">
+      <img src={HeaderImage} alt="" />
+      <h2>Sign in</h2>
+      <p>Sign in using your email & password</p>
 
-        <form onSubmit={this.handleSubmit}>
-          <FormInput
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={handleInputChange}
+        />
+        <FormInput
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={handleInputChange}
+        />
+        <Button type="submit">Sign in</Button>
+
+        <div className="google-auth-button" onClick={signInWithGoogle}>
+          <img
+            src="https://pics.freeicons.io/uploads/icons/png/37468251556105321-512.png"
+            alt=""
           />
-          <FormInput
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-          <Button type="submit">Sign in</Button>
+          <h4>Sign in using google account</h4>
+        </div>
 
-          <div className="google-auth-button" onClick={signInWithGoogle}>
-            <img
-              src="https://pics.freeicons.io/uploads/icons/png/37468251556105321-512.png"
-              alt=""
-            />
-            <h4>Sign in using google account</h4>
-          </div>
-
-          <h4
-            onClick={this.props.onSignUpClicked}
-            className="create-account-text"
-          >
-            Don't have account ? Create New
-          </h4>
-        </form>
-      </div>
-    );
-  }
-}
+        <h4 onClick={onSignUpClicked} className="create-account-text">
+          Don't have account ? Create New
+        </h4>
+      </form>
+    </div>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
   signInWithGoogle: () => dispatch(googleSignInStart()),

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 // Asset Imports
 import HeaderImage from "../../assets/images/window-header.png";
@@ -16,29 +16,26 @@ import Button from "../button/button.component";
 // Styles
 import "../sign-in/sign-in.styles.scss";
 
-class Signup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      displayName: "",
-      email: "",
-      password: "",
-      confirmedPassword: "",
-    };
-  }
+const Signup = ({ createAccount, error, onSignInClicked }) => {
+  const [userCredentials, setUserCredentials] = useState({
+    email: "",
+    password: "",
+    confirmedPassword: "",
+    displayName: "",
+  });
 
-  handleInputChange = (event) => {
+  const { email, password, confirmedPassword, displayName } = userCredentials;
+
+  const handleInputChange = (event) => {
     const { value, name } = event.target;
-    this.setState({
+    setUserCredentials({
+      ...userCredentials,
       [name]: value,
     });
   };
 
-  handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { displayName, email, password, confirmedPassword } = this.state;
-    const { createAccount, error } = this.props;
-
     if (password !== confirmedPassword) {
       alert("Password Don't match!");
       return;
@@ -47,68 +44,52 @@ class Signup extends Component {
     await createAccount({ email, password, displayName });
 
     if (error) return;
-
-    // try {
-    //   const { user } = await auth.createUserWithEmailAndPassword(
-    //     email,
-    //     password
-    //   );
-
-    //   await createUserProfile(user, displayName);
-    // } catch (error) {
-    //   console.log(`failed to create user profile ${error.message}`);
-    // }
   };
 
-  render() {
-    return (
-      <div className="signin-component-container">
-        <img src={HeaderImage} alt="" />
-        <h2>Sign up</h2>
-        <p>Create new account for yourself</p>
+  return (
+    <div className="signin-component-container">
+      <img src={HeaderImage} alt="" />
+      <h2>Sign up</h2>
+      <p>Create new account for yourself</p>
 
-        <form onSubmit={this.handleSubmit}>
-          <FormInput
-            type="text"
-            name="displayName"
-            placeholder="Enter your name"
-            value={this.state.displayName}
-            onChange={this.handleInputChange}
-          />
-          <FormInput
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={this.state.email}
-            onChange={this.handleInputChange}
-          />
-          <FormInput
-            type="password"
-            name="password"
-            placeholder="Set password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-          <FormInput
-            type="password"
-            name="confirmedPassword"
-            placeholder="Confirm password"
-            value={this.state.confirmedPassword}
-            onChange={this.handleInputChange}
-          />
-          <Button type="submit">Sign up</Button>
+      <form onSubmit={handleSubmit}>
+        <FormInput
+          type="text"
+          name="displayName"
+          placeholder="Enter your name"
+          value={displayName}
+          onChange={handleInputChange}
+        />
+        <FormInput
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={handleInputChange}
+        />
+        <FormInput
+          type="password"
+          name="password"
+          placeholder="Set password"
+          value={password}
+          onChange={handleInputChange}
+        />
+        <FormInput
+          type="password"
+          name="confirmedPassword"
+          placeholder="Confirm password"
+          value={confirmedPassword}
+          onChange={handleInputChange}
+        />
+        <Button type="submit">Sign up</Button>
 
-          <h4
-            onClick={this.props.onSignInClicked}
-            className="create-account-text"
-          >
-            Already have account ? Sign in
-          </h4>
-        </form>
-      </div>
-    );
-  }
-}
+        <h4 onClick={onSignInClicked} className="create-account-text">
+          Already have account ? Sign in
+        </h4>
+      </form>
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   error: selectError,
