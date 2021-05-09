@@ -1,23 +1,20 @@
+import React, { useContext } from "react";
+
 // Styles
 import "./cart-item.styles.scss";
 
 // Utils
 import { convertToCurrencyString } from "../../utils/string-formatter.utils";
 
+// Context
+import { CartContext } from "../../providers/cart/cart.provider";
+
 // Component
 import Button from "../../components/button/button.component";
 
-// Redux
-import { connect } from "react-redux";
-
-import {
-  addItemToCart,
-  clearItemFromCart,
-  removeCartItem,
-} from "../../redux/cart/cart.actions";
-
-const CartItem = ({ cartItem, clearFromCart, addItem, removeItem }) => {
+const CartItem = ({ cartItem }) => {
   const { name, price, imageUrl, quantity } = cartItem;
+  const { addItem, removeItem, clearItem } = useContext(CartContext);
   return (
     <div className="cart-item-container">
       <img className="product-image" src={imageUrl} alt="" />
@@ -29,10 +26,7 @@ const CartItem = ({ cartItem, clearFromCart, addItem, removeItem }) => {
           <h4 className="quantity-text">{quantity}</h4>
           <h4 onClick={() => addItem(cartItem)}>+</h4>
           <div className="space"></div>
-          <Button
-            styles="remove-button"
-            onClick={() => clearFromCart(cartItem)}
-          >
+          <Button styles="remove-button" onClick={() => clearItem(cartItem)}>
             Remove
           </Button>
         </div>
@@ -41,10 +35,4 @@ const CartItem = ({ cartItem, clearFromCart, addItem, removeItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  clearFromCart: (cartItem) => dispatch(clearItemFromCart(cartItem)),
-  addItem: (cartItem) => dispatch(addItemToCart(cartItem)),
-  removeItem: (cartItem) => dispatch(removeCartItem(cartItem)),
-});
-
-export default connect(null, mapDispatchToProps)(CartItem);
+export default CartItem;

@@ -1,15 +1,18 @@
+import React, { useContext } from "react";
+
 // Styles
 import "./category-products.styles.scss";
 
 // Components
 import ProductCard from "../../components/product-card/product-card.component";
 
-import { connect } from "react-redux";
+// Context
+import ShopContext from "../../contexts/shop/shop.context";
 
-import { selectCategory } from "../../redux/data/data.selectors";
-
-const CategoryProducts = ({ category }) => {
-  const { title, items } = category;
+const CategoryProducts = ({ match }) => {
+  const context = useContext(ShopContext);
+  const shopData = context[match.params.categoryId];
+  const { title, items } = shopData;
   return (
     <div>
       <h3 className="title">{title}</h3>
@@ -22,8 +25,4 @@ const CategoryProducts = ({ category }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  category: selectCategory(ownProps.match.params.categoryId)(state),
-});
-
-export default connect(mapStateToProps)(CategoryProducts);
+export default CategoryProducts;

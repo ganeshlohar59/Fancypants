@@ -1,3 +1,6 @@
+//
+import React, { useContext, useState } from "react";
+
 // Styled
 import {
   HeaderContainer,
@@ -15,17 +18,23 @@ import { connect } from "react-redux";
 
 // Selectors
 import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
+
 import { selectVisible } from "../../redux/cart/cart.selectors";
 
 // Actions
 import { signOutStart } from "../../redux/user/user.actions";
 
+// Context
+import CurrentUserContext from "../../contexts/current-user/current-user.context";
+import { CartContext } from "../../providers/cart/cart.provider";
+
 // Components
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-const Header = ({ currentUser, visible, signOut }) => {
+const Header = ({ signOut }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const { cartVisible, toggleCartVisibility } = useContext(CartContext);
   return (
     <HeaderContainer>
       <LogoContainer>
@@ -51,15 +60,16 @@ const Header = ({ currentUser, visible, signOut }) => {
           )}
         </NavItemList>
       </TopNavigationContainer>
+
       <CartIcon />
-      {visible ? <CartDropdown /> : null}
+
+      {cartVisible ? <CartDropdown /> : null}
     </HeaderContainer>
   );
 };
 
 // Mapping state to reducer
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
   visible: selectVisible,
 });
 

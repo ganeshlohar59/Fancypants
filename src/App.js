@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 
@@ -18,31 +18,46 @@ import {
 } from "react-router-dom";
 
 // Firebase
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfile } from "./firebase/firebase.utils";
 
-// Redux
-import { connect } from "react-redux";
-import { selectCurrentUser } from "./redux/user/user.selectors";
+import CurrentUserContext from "./contexts/current-user/current-user.context";
 
-// action
-import { checkUserSession } from "./redux/user/user.actions";
-import { createStructuredSelector } from "reselect";
-
-const App = ({ checkUserSession, currentUser }) => {
-  // componentDidMount() {
-  //   const { checkUserSession } = this.props;
-  //   checkUserSession();
-  // }
+const App = () => {
+  // State
+  const INITIAL_STATE = {
+    currentUser: null,
+  };
+  const [state, setState] = useState(INITIAL_STATE);
+  const { currentUser } = state;
 
   // Lifecycle Hooks
   useEffect(() => {
-    checkUserSession();
-  }, [checkUserSession]);
+    const detachAuthListener = auth.onAuthStateChanged(async (currentUser) => {
+      if (currentUser) {
+        const userRef = await createUserProfile(currentUser);
+        userRef.onSnapshot((snapshot) => {
+          setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data(),
+            },
+          });
+        });
+      }
+      setState({ currentUser });
+    });
+
+    return () => {
+      detachAuthListener();
+    };
+  }, []);
 
   return (
     <div className="App">
       <Router>
-        <Header />
+        <CurrentUserContext.Provider value={currentUser}>
+          <Header />
+        </CurrentUserContext.Provider>
         <Switch>
           <Route exact={true} path="/" component={Homepage} />
           <Route path="/shop" component={Shop} />
@@ -56,12 +71,4 @@ const App = ({ checkUserSession, currentUser }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  checkUserSession: () => dispatch(checkUserSession()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

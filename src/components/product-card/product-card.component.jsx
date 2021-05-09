@@ -1,20 +1,22 @@
+import React, { useContext } from "react";
+
 // Styles
 import "../../assets/styles/card.styles.scss";
 import "./product-card.styles.scss";
 
+// Context
+import { CartContext } from "../../providers/cart/cart.provider";
+
 // Components
 import Button from "../button/button.component";
 
-// Reduc
-import { connect } from "react-redux";
-import { addItemToCart } from "../../redux/cart/cart.actions";
-
-const ProductCard = ({ item, addItemToCart }) => {
+const ProductCard = ({ item }) => {
   const { name, price, imageUrl } = item;
+  const { addItem } = useContext(CartContext);
   return (
     <div className="card product-card-container">
       <img src={imageUrl} alt="" />
-      <Button styles="add-to-cart-btn" onClick={() => addItemToCart(item)}>
+      <Button styles="add-to-cart-btn" onClick={() => addItem(item)}>
         Add to Cart
       </Button>
       <div className="product-info">
@@ -25,8 +27,4 @@ const ProductCard = ({ item, addItemToCart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItemToCart: (item) => dispatch(addItemToCart(item)),
-});
-
-export default connect(null, mapDispatchToProps)(ProductCard);
+export default ProductCard;

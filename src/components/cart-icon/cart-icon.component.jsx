@@ -1,34 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { ReactComponent as BagIcon } from "../../assets/svgs/cart.svg";
 
 // Styles
 import "./cart-icon.styles.scss";
 
-// Redux
-import { connect } from "react-redux";
+// Context
+import { CartContext } from "../../providers/cart/cart.provider";
 
-import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+const CartIcon = () => {
+  const { toggleCartVisibility, cartItemsCount } = useContext(CartContext);
 
-import { toggleCartVisibility } from "../../redux/cart/cart.actions";
+  return (
+    <div className="cart-icon" onClick={toggleCartVisibility}>
+      <BagIcon className="icon" />
+      {cartItemsCount === 0 ? null : (
+        <div className="item-count">
+          <p>{cartItemsCount}</p>
+        </div>
+      )}
+    </div>
+  );
+};
 
-const CartIcon = ({ toggleCartVisibility, cartItemCount }) => (
-  <div className="cart-icon" onClick={toggleCartVisibility}>
-    <BagIcon className="icon" />
-    {cartItemCount === 0 ? null : (
-      <div className="item-count">
-        <p>{cartItemCount}</p>
-      </div>
-    )}
-  </div>
-);
-
-const mapDispatchToProps = (dispatch) => ({
-  toggleCartVisibility: () => dispatch(toggleCartVisibility()),
-});
-
-const mapStateToProps = (state) => ({
-  cartItemCount: selectCartItemsCount(state),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default CartIcon;
